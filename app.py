@@ -6,7 +6,7 @@ sh = gc.open("Rental Property Calculator")
 wrks = sh.worksheets()
 
 getField = [mapping.letters[x] for x in mapping.letters]
-convertField = mapping.cellmapping[getField]j
+convertField = mapping.cellmapping[getField]
 
 def setsheet(name): 
     for sheet in wrks: 
@@ -24,19 +24,18 @@ def setfunctions():
 
 #setfunctions()
 
+def setAllValues(row_num, name):
+    def get_rpq_vals(row_num, name): 
+        rpq_col = [] 
 
+        for key in mapping.functionMapping.keys():
+            rpq_columns = (map(lambda letter: letter + row_num, mapping.letters))
 
-def get_rpq_vals(row_num, name): 
-    rpq_col = [] 
+        rpq_col.append(rpq_columns)
 
-    for key in mapping.functionMapping.keys():
-        rpq_columns = (map(lambda letter: letter + row_num, mapping.letters))
-
-    rpq_col.append(rpq_columns)
-
-    return rpq_col
-
-getDisplay = [setsheet("RPQ").acell(x).value for x in get_rpq_vals("5", "Keshawn PDF")]
+        return rpq_col
+    
+    getDisplay = [setsheet("RPQ").acell(x).value for x in get_rpq_vals(row_num, name)]
 
 def newSheet(): 
     pass 
