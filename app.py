@@ -5,6 +5,9 @@ gc = gspread.oauth()
 sh = gc.open("Rental Property Calculator")
 wrks = sh.worksheets()
 
+getField = [mapping.letters[x] for x in mapping.letters]
+convertField = mapping.cellmapping[getField]j
+
 def setsheet(name): 
     for sheet in wrks: 
         if name in sheet.title: 
@@ -33,10 +36,7 @@ def get_rpq_vals(row_num, name):
 
     return rpq_col
 
-    
-
-getDisplay = [setsheet("RPQ").acell(x).value for x in strings]
-getField = [mapping.letters[x] for x in mapping.letters]
+getDisplay = [setsheet("RPQ").acell(x).value for x in get_rpq_vals("5", "Keshawn PDF")]
 
 def newSheet(): 
     pass 
