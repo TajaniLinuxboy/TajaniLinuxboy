@@ -38,6 +38,25 @@ def setAllValues(row_num, name):
     getDisplay = [setsheet("RPQ").acell(x).value for x in get_rpq_vals(row_num, name)]
 
 def newSheet(name): 
-    sh.add_worksheet(name)
+    sheet = sh.add_worksheet(name)
+    for key, value in mapping.nameMapping.items():
+        sheet.acell(key).update_acell(value)
+    
+    for key, value in mapping.colorMapping.items(): 
+        sheet.format(key, {
+            "backgroundColor": {
+                key: value,
+            }
+        })
+    
+    for key, value in mapping.textClr.items(): 
+        sheet.format(key, {
+            "textFormat": {
+                "foregroundColor": {
+                    key: value,
+                }
+            },
+            "bold": True
+        })
 
 
