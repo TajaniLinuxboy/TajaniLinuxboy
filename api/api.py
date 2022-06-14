@@ -12,6 +12,11 @@ def setValues():
     else: 
         return "Error: No rownum(Row Number) and name specified"
 
+@app.route("/api/v1/resources/func/newSheet", methods=["GET"])
+def newSheet(): 
+    if ap.newSheet(): 
+        return "New sheet created"
+
 app.run()
 
 
