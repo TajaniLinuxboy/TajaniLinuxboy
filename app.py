@@ -37,7 +37,7 @@ def setAllValues(row_num, name):
     
     getDisplay = [setsheet("RPQ").acell(x).value for x in get_rpq_vals(row_num, name)]
 
-def newSheet(): 
-    pass 
+def newSheet(name): 
+    sh.add_worksheet(name)
 
 
